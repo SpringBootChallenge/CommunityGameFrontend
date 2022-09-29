@@ -1,9 +1,10 @@
 import React from 'react'
+import GameStat from './Stats/GameStat'
 
 function Game(props) {
     return (
         <div className="card p-5">
-            <div className="row">
+            <div className="row mb-3">
                 <div className="col">
                     <img src="" alt="" />
                 </div>
@@ -40,7 +41,18 @@ function Game(props) {
                 </div>
             </div>
             <div className="row">
-
+                <div className="col">
+                    <GameStat value={80} statName={"Players"} />
+                </div>
+                <div className="col">
+                    <GameStat value={80} statName={"Players"} />
+                </div>
+                <div className="col">
+                    <GameStat value={80} statName={"Players"} />
+                </div>
+                <div className="col">
+                    <GameStat value={80} statName={"Players"} />
+                </div>
             </div>
         </div>
     )
