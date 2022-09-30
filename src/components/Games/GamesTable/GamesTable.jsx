@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import gameService from '../../../services/Games/gameService';
 import './GamesTable.css';
 
-function GamesTable(props) {
+function GamesTable({ onGameSelection }) {
     const navigateTo = useNavigate();
     const pageSize = 10;
     const [games, setGames] = useState([]);
@@ -45,8 +45,9 @@ function GamesTable(props) {
 
     const onRowSelection = useCallback(() => {
         const selectedGames = gridRef.current.api.getSelectedRows();
-        const gameId = selectedGames[0].id;
-        navigateTo(`/games/${gameId}`, { replace: true });
+        const game = selectedGames[0];
+        onGameSelection(game);
+        navigateTo(`/games/${game.id}`);
     }, []);
 
     return (
