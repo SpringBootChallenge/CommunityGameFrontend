@@ -4,6 +4,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.min.css';
 import { useNavigate } from 'react-router-dom';
+import gameService from '../../../services/Games/gameService';
 import './GamesTable.css';
 
 function GamesTable(props) {
@@ -24,20 +25,19 @@ function GamesTable(props) {
             getRows: ({ startRow, endRow, successCallback, failCallback }) => {
                 const numRequiredGames = endRow - startRow;
                 const requestedPage = endRow / numRequiredGames;
-                fetch('/games?' + new URLSearchParams({
-                    limit: numRequiredGames,
-                    page: requestedPage,
-                }))
-                    .then(result => result.json())
-                    .then(
-                        games => {
-                            successCallback(games, null);
-                        },
-                        error => {
-                            console.log(error);
-                            failCallback();
-                        }
-                    );
+                gameService.getGames(
+                    {
+                        limit: numRequiredGames,
+                        page: requestedPage,
+                    },
+                    games => {
+                        successCallback(games, null);
+                    },
+                    error => {
+                        console.log(error);
+                        failCallback();
+                    }
+                );
             }
         };
         api.setDatasource(dataSource);
