@@ -5,7 +5,6 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.min.css';
 import { useNavigate } from 'react-router-dom';
 import gameService from '../../../services/Games/gameService';
-import './GamesTable.css';
 
 function GamesTable({ onGameSelection }) {
     const navigateTo = useNavigate();
