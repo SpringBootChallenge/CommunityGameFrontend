@@ -26,3 +26,13 @@ input.form-control:focus {
   background-color: #110824;
   color: white;
 }
+
+.btn-primary {
+  --bs-btn-bg: #006992;
+  --bs-btn-border-color: #006992;
+  --bs-btn-hover-bg: #005a7e;
+  --bs-btn-hover-border-color: #005a7e;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #005a7e;
+  --bs-btn-active-border-color: #005a7e;
+}
