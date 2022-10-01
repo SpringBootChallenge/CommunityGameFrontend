@@ -19,3 +19,10 @@ h6 {
 .card {
   background-color: #110824;
 }
+
+input.form-control,
+input.form-control:active,
+input.form-control:focus {
+  background-color: #110824;
+  color: white;
+}
