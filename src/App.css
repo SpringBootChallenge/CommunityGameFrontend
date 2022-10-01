@@ -2,6 +2,7 @@ body {
   --bs-body-bg: #211142;
   --bs-body-color: white;
   --bs-primary: #006992;
+  --bs-danger: #EF476F;
 }
 
 h1,
