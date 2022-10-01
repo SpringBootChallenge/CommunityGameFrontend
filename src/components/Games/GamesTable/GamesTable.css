@@ -5,3 +5,7 @@
     --ag-odd-row-background-color: rgba(0, 0, 0, 0.0);
     --ag-borders: none;
 }
+
+.ag-paging-panel {
+    border: none;
+}

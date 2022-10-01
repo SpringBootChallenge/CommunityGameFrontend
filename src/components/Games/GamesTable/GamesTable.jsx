@@ -3,6 +3,7 @@ import React, { useCallback, useRef, useState } from 'react';
 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.min.css';
+import './GamesTable.css'
 import { useNavigate } from 'react-router-dom';
 import gameService from '../../../services/Games/gameService';
 
