@@ -1,13 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useState } from 'react';
-import {
-  BrowserRouter, Route, Routes
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import './App.css';
 import GamesList from './components/Games/GamesList/GamesList';
 import { AuthProvider, RequireAuth } from "./hooks/useAuth";
-import GameView from './views/Games/GameView';
+import GameView, { gameLoader } from './views/Games/GameView';
 import Login from './views/Login/Login';
 import SignUp from './views/SignUp/SignUp';
 
@@ -21,24 +19,29 @@ function App() {
         <div className="col">
 
           <AuthProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route path={'/login'} element={<Login />} />
-                <Route path={'/signup'} element={<SignUp />} />
-                <Route
-                  path={'/games'}
-                  element={
-                    <RequireAuth>
-                      <GamesList onGameSelection={(game) => { setSelectedGame(game) }} />
-                    </RequireAuth>
-                  } />
-                <Route path={'/games/:gameId'} element={
-                  <RequireAuth>
-                    <GameView game={selectedGame} />
-                  </RequireAuth>
-                } />
-              </Routes>
-            </BrowserRouter>
+            <RouterProvider
+              router={
+                createBrowserRouter(
+                  createRoutesFromElements(
+                    <Route path='/'>
+                      < Route path={'/login'} element={< Login />} />
+                      <Route path={'/signup'} element={<SignUp />} />
+                      <Route
+                        path={'/games'}
+                        element={
+                          <RequireAuth>
+                            <GamesList onGameSelection={(game) => { setSelectedGame(game) }} />
+                          </RequireAuth>
+                        } />
+                      <Route path={'/games/:gameId'} loader={gameLoader} element={
+                        <RequireAuth>
+                          <GameView />
+                        </RequireAuth>
+                      } />
+                    </Route>
+                  )
+                )}
+            />
           </AuthProvider>
         </div>
       </div>

@@ -56,12 +56,11 @@ function GamesTable({ onGameSelection }) {
         api.setDatasource(dataSource);
     }, []);
 
-    const onRowSelection = useCallback(() => {
+    const onRowSelection = () => {
         const selectedGames = gridRef.current.api.getSelectedRows();
         const game = selectedGames[0];
-        onGameSelection(game);
         navigateTo(`/games/${game.id}`);
-    }, []);
+    };
 
     return (
         <div className='ag-theme-alpine' style={{ height: '100%', width: '100%' }}>
