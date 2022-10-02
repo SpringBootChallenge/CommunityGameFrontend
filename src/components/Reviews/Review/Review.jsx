@@ -21,7 +21,7 @@ function Review({ review }) {
                 <div className="col">
                     <p className='m-0'>“{review.text}”</p>
                 </div>
-                <div className="col-2">
+                <div className="col-2 col-xl-1">
                     <p className='border border-3 rounded-circle d-flex align-items-center justify-content-center m-0' style={{ width: '75px', height: '75px' }}>
                         {review.score}/10
                     </p>
