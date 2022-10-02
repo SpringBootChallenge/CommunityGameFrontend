@@ -1,8 +1,9 @@
-import React from 'react'
+import UserLogo from '../../Logos/UserLogo';
+import './Review.css';
 
 function Review({ review }) {
     return (
-        <div className='card p-3 pb-4 mt-2'>
+        <div className='review-card card p-3 pb-5 mt-2'>
             <div className="row">
                 <div className="col d-flex justify-content-end">
                     <p>Edit</p>
@@ -11,8 +12,8 @@ function Review({ review }) {
             </div>
             <div className="row d-flex align-items-center">
                 <div className="col-2 d-flex align-items-center">
-                    <img src="" alt="" />
-                    <div>
+                    <UserLogo username={review.user.username} />
+                    <div className='w-50'>
                         <h5>{review.user.username}</h5>
                         <p className='m-0'>{review.timeStamp}</p>
                     </div>
