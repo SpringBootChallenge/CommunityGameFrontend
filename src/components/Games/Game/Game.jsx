@@ -45,10 +45,10 @@ function Game({ game }) {
                     <GameStat value={game.playingCount} statName={"Players"} />
                 </div>
                 <div className="col">
-                    <GameStat value={game.backlogCount} statName={"Players"} />
+                    <GameStat value={game.backlogCount} statName={"Users about to play"} />
                 </div>
                 <div className="col">
-                    <GameStat value={game.beatCount} statName={"Players"} />
+                    <GameStat value={game.beatCount} statName={"Winners"} />
                 </div>
                 <div className="col">
                     <GameStat value={game.retiredCount} statName={"Defeated players"} />
