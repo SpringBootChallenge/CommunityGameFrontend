@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import gameService from '../../../services/Games/gameService';
 import './GamesTable.css';
 
-function GamesTable({ onGameSelection }) {
+function GamesTable(props) {
     const navigateTo = useNavigate();
     const pageSize = 10;
     const [games, setGames] = useState([]);

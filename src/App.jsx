@@ -12,7 +12,6 @@ import SignUp from './views/SignUp/SignUp';
 
 
 function App() {
-  const [selectedGame, setSelectedGame] = useState();
   return (
     <div className="container">
       <div className="row">
@@ -30,7 +29,7 @@ function App() {
                         path={'/games'}
                         element={
                           <RequireAuth>
-                            <GamesList onGameSelection={(game) => { setSelectedGame(game) }} />
+                            <GamesList />
                           </RequireAuth>
                         } />
                       <Route path={'/games/:gameId'} loader={gameLoader} element={
