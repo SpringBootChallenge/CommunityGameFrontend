@@ -3,20 +3,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useState } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import './App.css';
+import TopNavBar from './components/TopNavBar/TopNavBar';
 import GamesList from './components/Games/GamesList/GamesList';
 import { AuthProvider, RequireAuth } from "./hooks/useAuth";
 import GameView, { gameLoader } from './views/Games/GameView';
 import Login from './views/Login/Login';
 import SignUp from './views/SignUp/SignUp';
 
-
-
 function App() {
   return (
     <div className="container">
       <div className="row">
         <div className="col">
-
           <AuthProvider>
             <RouterProvider
               router={

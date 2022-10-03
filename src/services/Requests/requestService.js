@@ -1,10 +1,15 @@
-const request = (url, params = {}, method = 'GET', onSuccess = null, onError = null) => {
+const request = (url, params = {}, method = 'GET', onSuccess = null, onError = null, header = null) => {
     let options = {
         method,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         }
     };
+
+    if(header != null){
+        options.headers['User-id'] = header; 
+    }
+
     if ('GET' === method) {
         url += '?' + new URLSearchParams(params);
     } else {
@@ -12,6 +17,11 @@ const request = (url, params = {}, method = 'GET', onSuccess = null, onError = n
     }
 
     const handleError = (error) => {
+        try{
+            error = JSON.parse(error); 
+        }catch(e){
+            console.log("No parse error to JSON"); 
+        }
         if (onError) {
             onError(error);
         }
@@ -28,16 +38,23 @@ const request = (url, params = {}, method = 'GET', onSuccess = null, onError = n
     return fetch(url, options)
         .then(
             (response) => {
-                let jsonPromise = response.json();
-                if (!response.ok) {
-                    return jsonPromise.then(Promise.reject.bind(Promise));
+                let textPromise = response.text();
+                if(!response.ok){
+                    return textPromise.then(Promise.reject.bind(Promise));
                 }
-                return jsonPromise;
-            },
+                return textPromise; 
+            }, 
             handleError
         )
-        .then(handleSuccess, handleError);
+        .then(
+            (text) => {
+                const textResponse = text.length > 0 ? JSON.parse(text) : text;
+                return  handleSuccess(textResponse); 
+            }, 
+            handleError);     
 };
 
 export const getRequest = (url, params, onSuccess, onError) => request(url, params, 'GET', onSuccess, onError);
-export const postRequest = (url, body, onSuccess, onError) => request(url, body, 'POST', onSuccess, onError);
+export const postRequest = (url, body, onSuccess, onError, header) => request(url, body, 'POST', onSuccess, onError, header);
+export const deleteRequest = (url, onSuccess, onError, header) => request(url, null, 'DELETE', onSuccess, onError, header); 
+export const putRequest = (url , body, onSuccess, onError, header) => request(url, body, 'PUT', onSuccess, onError, header); 
