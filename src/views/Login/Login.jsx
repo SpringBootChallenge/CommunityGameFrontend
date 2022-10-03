@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import UserFormHeader from '../../components/UserFormHeader/UserFormHeader';
 import { useAuth } from '../../hooks/useAuth';
-import superMarioImg from './supermario.jpg';
 import './Login.css';
-import Header from '../../components/Header/Header';
+import superMarioImg from './supermario.jpg';
 
 function Login(props) {
     const auth = useAuth();
@@ -27,11 +27,11 @@ function Login(props) {
     }
     return (
         <div className="col vh-100 d-flex flex-column justify-content-center align-items-center">
-            <Header />
+            <UserFormHeader />
             <div className='card w-75'>
                 <div className="row">
                     <div className="col-4">
-                        <img className='login-image' src={superMarioImg} alt="Mario Bros Game" />
+                        <img className='user-form-image' src={superMarioImg} alt="Mario Bros Game" />
                     </div>
                     <div className="col pt-5 pb-5 pe-4">
                         <h1 className='mb-5 text-white'>Login</h1>
