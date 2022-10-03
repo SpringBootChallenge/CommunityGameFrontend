@@ -1,0 +1,25 @@
+:root{
+    --background-color: #211142;
+    --delete-color: #EF476F;
+    --title-color: #0496FF;
+}
+
+#deleteReviewButton{
+    background-color: var(--delete-color);
+    padding: 1px;
+    height: 30px;
+    width: 30px;
+}
+
+#deleteTitle,
+#deleteIcon{
+    color: var(--delete-color); 
+}
+
+#cancel-button{
+    background-color: #110824;
+}
+
+#delete-button{
+    background-color: var(--delete-color);
+}
