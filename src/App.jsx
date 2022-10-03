@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col">
+        <div className="col mb-5">
           <AuthProvider>
             <RouterProvider
               router={
